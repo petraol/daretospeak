@@ -5,6 +5,7 @@ using UnityEngine.XR.iOS;
 
 public class GenerateImageAnchor : MonoBehaviour {
 
+  	public List<GameObject> children;
 
 	[SerializeField]
 	private ARReferenceImage referenceImage;
@@ -28,6 +29,22 @@ public class GenerateImageAnchor : MonoBehaviour {
 		if (arImageAnchor.referenceImageName == referenceImage.imageName) {
 			Vector3 position = UnityARMatrixOps.GetPosition (arImageAnchor.transform);
 			Quaternion rotation = UnityARMatrixOps.GetRotation (arImageAnchor.transform);
+			
+			foreach (Transform child in prefabToGenerate.transform)
+				children.Add(child.gameObject);
+
+			children[0].GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+			children[1].GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+			children[2].GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+			children[3].GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+			children[4].GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+			children[5].GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+			children[6].GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+			children[8].GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+			children[9].GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+			children[10].GetComponent<MeshRenderer>().material.color = new Color(1.0f, 1.0f, 1.0f, 0.5f);
+
+
 
 			imageAnchorGO = Instantiate<GameObject> (prefabToGenerate, position, rotation);
 		}
